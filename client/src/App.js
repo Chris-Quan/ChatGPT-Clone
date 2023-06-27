@@ -2,19 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 import './normal.css'
 
-import {useState} from 'react';
-
-
 function App() {
-
-  const [input, setInput] = useState("");
-  const [chatLog, setChatLog] = useState([]);
 
   async function handleSubmit(e){
     e.preventDefault();
-    setChatLog([...chatLog, {user:"me", message: '${input}'}])
-    setInput("");
-
+    console.log("submit")
   }
 
   return (
@@ -27,7 +19,16 @@ function App() {
       </aside>
       <section className = "chatbox">
         <div className = "chat-log">
-          <ChatMessage message={message}/>
+          <div className = "chat-message">
+            <div className = "chat-message-center">
+              <div className="avatar">
+                
+              </div>
+              <div className = "message">
+                hello world
+              </div>
+            </div>
+          </div>
           <div className = "chat-message chatgpt">
             <div className = "chat-message-center">
               <div className="avatar chatgpt">
@@ -56,12 +57,9 @@ function App() {
         </div>
         <div className = "chat-input-holder">
           <form onSubmit = {handleSubmit}>
-            <input rows = "1" 
-            value = {input}
-            //onChange={()=> setInput(input) = e.target.value}
-            onChange={(e) => setInput(e.target.value)}
-            className = "chat-input-textarea"></input>
+            <input rows = "1" className = "chat-input-textarea" placeholder = "Type your message here"></input>
           </form>
+          
         </div>
       </section>
 
@@ -69,16 +67,4 @@ function App() {
   );
 }
 
-const ChatMessage = ({ message }) => {
-  <div className = "chat-message">
-    <div className = "chat-message-center">
-      <div className="avatar">
-        
-      </div>
-      <div className = "message">
-        {message.message}
-      </div>
-    </div>
-  </div>
-}
 export default App;
