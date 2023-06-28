@@ -24,17 +24,14 @@ const port = 3080
 
 app.post('/', async (req,res) =>{
     const { message } = req.body;
-    console.log(message)
-    // const response = await openai.createCompletion({
-    //     model: "text-davinci-003",
-    //     prompt: `${message}`,
-    //     max_tokens: 100,
-    //     temperature: 0.5,
-    //   });
-    //console.log()
+    const response = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: `${message}`,
+        max_tokens: 100,
+        temperature: 0.5,
+      });
     res.json({
-        //data: response.data,
-        data: message,
+        message: response.data.choices[0].text,
     })
 });
 

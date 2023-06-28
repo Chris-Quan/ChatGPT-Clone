@@ -8,10 +8,10 @@ function App() {
   const [input, setInput] = useState("");
   const [chatLog, setChatLog] = useState([{
     user: "gpt",
-    message: "How can I help you today?"
+    message: "explain canadian culture"
   },{
     user: "user",
-    message: "I want to use ChatGPT today"
+    message: "explain canadian culture"
   }
   ]);
 
@@ -32,7 +32,8 @@ function App() {
       })
     })
     const data = await response.json();
-    console.log(data);
+    setChatLog([...chatLog, { user: "gpt", message: `${data.message}`}])
+    console.log(data.message);
   }
 
   return (
